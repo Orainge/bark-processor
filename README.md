@@ -66,7 +66,7 @@ mvn install
 
 ## 2.2 系统网络架构图
 
-![系统网络架构图](https://cdn.jsdelivr.net/gh/Orainge/bark-processor@master/pic/pic1.png)
+![系统网络架构图](https://cdn.jsdelivr.net/gh/Orainge/bark-processor@master/pic/pic5.png)
 
 ## 2.4 系统处理流程图
 
