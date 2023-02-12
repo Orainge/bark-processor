@@ -66,11 +66,11 @@ mvn install
 
 ## 2.2 系统网络架构图
 
-![系统网络架构图](https://cdn.jsdelivr.net/gh/Orainge/bark-processor/pic/pic1.png)
+![系统网络架构图](https://cdn.jsdelivr.net/gh/Orainge/bark-processor@master/pic/pic1.png)
 
 ## 2.4 系统处理流程图
 
-![系统处理流程图](https://cdn.jsdelivr.net/gh/Orainge/bark-processor/pic/pic2.png)
+![系统处理流程图](https://cdn.jsdelivr.net/gh/Orainge/bark-processor@master/pic/pic2.png)
 
 
 
@@ -228,7 +228,7 @@ terminal-notifier:
 
 - 设置-安全-设备和活动链接：页面最底端输入应用名（任意即可），然后点击【创建新应用密码】，即可得到用户token。
 
-![Nextcloud 创建 token](https://cdn.jsdelivr.net/gh/Orainge/bark-processor/pic/pic3.png)
+![Nextcloud 创建 token](https://cdn.jsdelivr.net/gh/Orainge/bark-processor@master/pic/pic3.png)
 
 ## 6.2 macOS 如何显示通知
 
