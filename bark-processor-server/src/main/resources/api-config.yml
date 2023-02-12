@@ -1,0 +1,40 @@
+# Bark 客户端配置
+device:
+  config:
+    - device-key: # Bark 服务的 token
+      # 重复发送拦截规则
+      # 如果符合规则，则该消息会检测是否重复发送
+      # 如果重复发送，则拦截，不提交到 Bark 服务端
+      # 关键字 (title-keyword / content-keyword) 匹配模式：正则表达式
+      repeat-filter-list:
+        - title-keyword: "" # 标题里包含什么字符串就进行拦截(留空/null表示任意匹配)
+          content-keyword: "" # 内容里包含什么字符串就进行拦截(留空/null表示任意匹配)
+          interval: 0 # 间隔几秒内只能重复发送一次 (0表示不设置间隔)
+      # 处理规则
+      # 如果符合规则，则该消息会使用 (processor-name) 处理后再提交到 Bark 服务端
+      # 适合一些特殊情况，需要对提交的 Bark 信息处理后再提交到 Bark 服务端
+      # 关键字 (title-keyword / content-keyword) 匹配模式：正则表达式
+      # forwarder-name: 处理器 Bean 名称，需要继承 com.orainge.bark_processor.server.process.processor.Processor
+      processor-list: # 处理规则
+        - title-keyword: "" # 标题里包含什么字符串就进行拦截(留空/null表示任意匹配)
+          content-keyword: "" # 内容里包含什么字符串就进行拦截(留空/null表示任意匹配)
+          processor-name: demoProcessor
+      # 转发规则
+      # 将收到的 Bark 信息进行转发
+      # 关键字 (title-keyword / content-keyword) 匹配模式：正则表达式
+      # forwarder-name: 转发器 Bean 名称，需要继承 com.orainge.bark_processor.server.process.forwarder.Forwarder
+      # 系统自带的 forwarder-name:
+      # 	[forwardServerForwarder] 统一通知推送服务
+      # 	[nextcloudForwarder] Nextcloud 通知服务
+      forwarder-list:
+        - title-keyword: "" # 标题里包含什么字符串就进行拦截(留空/null表示任意匹配)
+          content-keyword: "" # 内容里包含什么字符串就进行拦截(留空/null表示任意匹配)
+          forwarder-name: forwardServerForwarder
+        - title-keyword: (标题1|标题2) # e.g. 标题里包含关键字【标题1】或【标题2】即匹配
+          content-keyword: ""
+          forwarder-name: nextcloudForwarder
+
+# 调试模式
+debug:
+  # 是否启用调试模式 "true"-是 "false"-否
+  enable: "false"

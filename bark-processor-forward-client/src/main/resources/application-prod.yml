@@ -1,0 +1,8 @@
+# 【统一通知推送服务】服务端配置
+websocket-server:
+  # bark-processor 服务端 URL/exchange (http->ws; https->wss)
+  url: ws://localhost:9422/exchange
+
+logging:
+  level:
+    "com.orainge.bark_processor.forward.client": info

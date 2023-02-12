@@ -1,0 +1,13 @@
+server:
+  port: 9422
+  servlet:
+    context-path: /
+
+spring:
+  profiles:
+    active: @profileActive@
+
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true

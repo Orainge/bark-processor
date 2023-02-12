@@ -1,0 +1,25 @@
+# 【统一通知推送服务】服务端配置
+websocket-server:
+  # 连接服务端失败后等待多少秒后重试 (默认 5 秒)
+  reconnect-wait: 5
+
+# 【统一通知推送服务】客户端配置
+websocket-client:
+  id: XXX # 客户端 ID
+  key: XXX # 密钥
+
+# 调试模式
+debug:
+  # 是否启用调试模式 "true"-是 "false"-否
+  enable: "false"
+
+# terminal-notifier 配置
+terminal-notifier:
+  exec-path: "/path/to/terminal-notifier"
+
+# macos-alert 配置
+macos-alert:
+  # ICON 文件夹路径
+  icon-folder-path: "/path/to/icon"
+  # macos-alert 执行文件路径
+  exec-path: "/path/to/macos-alert"

@@ -1,0 +1,6 @@
+api:
+  url: http://127.0.0.1:8080
+
+logging:
+  level:
+    "com.orainge.bark_processor.server": info

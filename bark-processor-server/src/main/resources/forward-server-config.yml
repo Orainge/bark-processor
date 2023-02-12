@@ -1,0 +1,12 @@
+# 【统一通知推送服务】服务端配置
+websocket-server:
+  response:
+    time-out: 20000 # websocket 中等待回报文的时间(单位：毫秒)
+
+# 【统一通知推送服务】允许的客户端列表
+websocket-client:
+  list:
+    - id: XXX # 客户端 ID
+      key: XXX # 密钥
+      description: "XXX" # 客户端描述
+      # keep-alive: true # 是否由服务器定时发送 ping-pong 信息进行保活 (默认不开启)

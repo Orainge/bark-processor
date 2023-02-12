@@ -1,0 +1,9 @@
+nextcloud:
+  host-list:
+    - host: cloud.xxx.com:9999 # Nextcloud 服务地址（使用https连接）
+      admin-user: adminUser # 要推送的账号所属群组的管理员账号，即该管理员账号能管理目标接收账号
+      admin-password: XXXXX-XXXXX-XXXXX-XXXXX-XXXXX # 管理员账号 token，创建方式见 6.1 如何获取 Nextcloud 用户 token
+      # 接收通知的目标账户
+      notification-user-list:
+        - user1
+        - user2
