@@ -70,6 +70,12 @@ mvn install
 
 ## 2.4 系统处理流程图
 
+- 消息提交到服务器后，先经过 repeat-filter 处理，如果重复了则该消息不会继续发送。
+- 消息经过 processor-list 里的 processor 处理，改变原始信息内容。
+- 消息处理完成后：
+  - 发送给 Bark 服务端，经由 Bark 服务端分发到 Bark 客户端。
+  - 分发给 forwarder-list 里的 forwarder，将信息分发出去。
+
 ![系统处理流程图](https://cdn.jsdelivr.net/gh/Orainge/bark-processor@master/pic/pic2.png)
 
 
