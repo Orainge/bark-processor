@@ -257,10 +257,10 @@ osascript -e 'display dialog "通知内容" buttons {"确定"} default button 1 
 ```yaml
 # macos-alert 配置
 macos-alert:
-	# ICON 文件夹路径
-	icon-folder-path: "/path/to/icon"
-	# macos-alert 执行文件路径
-	exec-path: "/path/to/macos-alert"
+  # ICON 文件夹路径
+  icon-folder-path: "/path/to/icon"
+  # macos-alert 执行文件路径
+  exec-path: "/path/to/macos-alert"
 ```
 
 ## 6.3 客户端运行监控脚本
