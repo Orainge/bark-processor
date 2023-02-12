@@ -76,7 +76,7 @@ mvn install
   - 发送给 Bark 服务端，经由 Bark 服务端分发到 Bark 客户端。
   - 分发给 forwarder-list 里的 forwarder，将信息分发出去。
 
-![系统处理流程图](https://cdn.jsdelivr.net/gh/Orainge/bark-processor@master/pic/pic2.png)
+![系统处理流程图](https://cdn.jsdelivr.net/gh/Orainge/bark-processor@master/pic/pic4.png)
 
 
 
