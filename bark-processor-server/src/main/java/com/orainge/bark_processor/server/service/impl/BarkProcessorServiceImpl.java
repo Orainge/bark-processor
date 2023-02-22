@@ -35,6 +35,18 @@ public class BarkProcessorServiceImpl implements BarkProcessorService {
 
     @Override
     public void process(DeviceConfig.Config config, Map<String, String> formDataMap, HttpServletRequest request, HttpServletResponse response) {
+        /**
+         * formDataMap 示例数据
+         *
+         * {
+         *     	"isArchive": "1",
+         *     	"level": "active",
+         *     	"icon": "http://xxx.com/xxx.png",
+         *     	"title": "标题",
+         *     	"body": "内容"
+         *     }
+         */
+
         // 判断是不是推送通知
         String title = formDataMap.get("title");
 
