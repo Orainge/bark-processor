@@ -1,8 +1,10 @@
 package com.orainge.bark_processor.server.vo;
 
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 @Data
+@Accessors(chain = true)
 public class Result {
     private int code;
     private String message;
@@ -17,8 +19,8 @@ public class Result {
 
     public static Result error() {
         Result result = new Result();
-        result.setCode(200);
-        result.setMessage("success");
+        result.setCode(500);
+        result.setMessage("error");
         return result;
     }
 }

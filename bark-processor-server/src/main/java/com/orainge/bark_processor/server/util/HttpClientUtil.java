@@ -107,7 +107,7 @@ public class HttpClientUtil {
                 body = StreamUtils.copyToByteArray(request.getInputStream());
             } catch (Exception e) {
                 log.error("请求体转换错误 [{}]: {}", url.toString(), e.getMessage());
-                writeBodyJson(response, Result.error());
+                writeBodyJson(response, Result.error().setMessage(e.getMessage()));
                 return;
             }
         }

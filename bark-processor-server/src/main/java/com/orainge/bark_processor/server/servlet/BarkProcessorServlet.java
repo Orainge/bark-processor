@@ -139,7 +139,7 @@ public class BarkProcessorServlet extends HttpServlet {
             }
         } catch (Exception e) {
             log.error("转发错误", e);
-            httpClientUtil.writeBodyJson(response, Result.error());
+            httpClientUtil.writeBodyJson(response, Result.error().setMessage(e.getMessage()));
         }
     }
 }
