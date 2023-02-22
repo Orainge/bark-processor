@@ -13,6 +13,7 @@ import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.AntPathMatcher;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -43,6 +44,16 @@ public class BarkProcessorServlet extends HttpServlet {
     static {
         // Content-Type: application/x-www-form-urlencoded
         PARAMETER_PROCESSOR.put("application/x-www-form-urlencoded", (request, response) -> {
+            Map<String, String> formDataMap = new HashMap<>(); // formData 表单
+            Map<String, String[]> map = request.getParameterMap();
+            for (Map.Entry<String, String[]> entry : map.entrySet()) {
+                formDataMap.put(entry.getKey(), entry.getValue()[0]);
+            }
+            return formDataMap;
+        });
+
+        // Content-Type: application/json
+        PARAMETER_PROCESSOR.put("application/json", (request, response) -> {
             Map<String, String> formDataMap = new HashMap<>(); // formData 表单
             Map<String, String[]> map = request.getParameterMap();
             for (Map.Entry<String, String[]> entry : map.entrySet()) {
@@ -98,7 +109,15 @@ public class BarkProcessorServlet extends HttpServlet {
                 contentType = contentType.toLowerCase(Locale.ENGLISH);
 
                 // 获取参数处理器
-                BarkProcessorParameterProcessor parameterProcessor = PARAMETER_PROCESSOR.get(contentType);
+                BarkProcessorParameterProcessor parameterProcessor = null;
+                for (Map.Entry<String, BarkProcessorParameterProcessor> entry : PARAMETER_PROCESSOR.entrySet()) {
+                    String key = entry.getKey();
+                    if (new AntPathMatcher().match(key, contentType)) {
+                        // ant匹配成功
+                        parameterProcessor = entry.getValue();
+                    }
+                }
+
                 if (parameterProcessor == null) {
                     // 没有参数处理器，直接转发
                     httpClientUtil.doRequest(request, response);
