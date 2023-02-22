@@ -33,7 +33,7 @@ public class RepeatFilterUtils {
 
         if (repeatFilterList == null) {
             // 没有配置，直接放行
-            return true;
+            return false;
         }
 
         for (DeviceConfig.RepeatFilter repeatFilter : repeatFilterList) {
@@ -139,7 +139,7 @@ public class RepeatFilterUtils {
             } else {
                 // 比较时间
                 long nowTime = System.currentTimeMillis();
-                boolean tag = nowTime - lastTime < intervalTime * 1000L;
+                boolean tag = nowTime - lastTime <= intervalTime * 1000L;
                 if (!tag) {
                     TIME_MAP.put(deviceKey, nowTime);
                 }

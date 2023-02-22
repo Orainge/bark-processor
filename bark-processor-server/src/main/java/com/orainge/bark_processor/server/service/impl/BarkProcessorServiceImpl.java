@@ -1,6 +1,7 @@
 package com.orainge.bark_processor.server.service.impl;
 
 import com.orainge.bark_processor.server.config.DeviceConfig;
+import com.orainge.bark_processor.server.process.filter.FilterUtils;
 import com.orainge.bark_processor.server.process.forwarder.ForwarderUtils;
 import com.orainge.bark_processor.server.process.processor.ProcessorUtils;
 import com.orainge.bark_processor.server.process.repeat_filter.RepeatFilterUtils;
@@ -17,6 +18,9 @@ import java.util.Map;
 @Service
 @Slf4j
 public class BarkProcessorServiceImpl implements BarkProcessorService {
+    @Autowired
+    private FilterUtils filterUtils;
+
     @Autowired
     private RepeatFilterUtils repeatFilterUtils;
 
@@ -42,6 +46,12 @@ public class BarkProcessorServiceImpl implements BarkProcessorService {
 
         // RepeatFilterUtils 执行【拦截判断】操作
         if (repeatFilterUtils.checkIfIntercept(config, formDataMap, request, response)) {
+            // 拦截，不转发
+            return;
+        }
+
+        // FilterUtils 执行【拦截判断】操作
+        if (filterUtils.checkIfIntercept(config, formDataMap, request, response)) {
             // 拦截，不转发
             return;
         }

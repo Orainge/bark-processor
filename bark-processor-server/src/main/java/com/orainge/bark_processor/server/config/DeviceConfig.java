@@ -65,9 +65,14 @@ public class DeviceConfig {
         private String deviceKey;
 
         /**
-         * 拦截规则
+         * 重复拦截规则
          */
         private List<RepeatFilter> repeatFilterList;
+
+        /**
+         * 拦截规则
+         */
+        private List<Filter> filterList;
 
         /**
          * 处理规则
@@ -96,6 +101,24 @@ public class DeviceConfig {
          * 间隔几秒内只能重复发送一次
          */
         private Integer interval;
+    }
+
+    @Data
+    public static class Filter {
+        /**
+         * 标题里包含什么字符串就进行拦截
+         */
+        private String titleKeyword;
+
+        /**
+         * 内容里包含什么字符串就进行拦截
+         */
+        private String contentKeyword;
+
+        /**
+         * Filter Bean 名称
+         */
+        private String filterName;
     }
 
     @Data

@@ -70,15 +70,14 @@ mvn install
 
 ## 2.4 系统处理流程图
 
-- 消息提交到服务器后，先经过 repeat-filter 处理，如果重复了则该消息不会继续发送。
-- 消息经过 processor-list 里的 processor 处理，改变原始信息内容。
+- 消息提交到服务器后，先经过 repeat-filter 处理，如果重复了则该消息不会继续发送；
+- 消息经过 filter-list 里的 filter 处理，如果需要拦截该消息则不会发送，否则将继续发送；
+- 消息经过 processor-list 里的 processor 处理，改变原始信息内容；
 - 消息处理完成后：
-  - 发送给 Bark 服务端，经由 Bark 服务端分发到 Bark 客户端。
+  - 发送给 Bark 服务端，经由 Bark 服务端分发到 Bark 客户端；
   - 分发给 forwarder-list 里的 forwarder，将信息分发出去。
 
-![系统处理流程图](https://cdn.jsdelivr.net/gh/Orainge/bark-processor@master/pic/pic4.png)
-
-
+![系统处理流程图](https://cdn.jsdelivr.net/gh/Orainge/bark-processor@master/pic/pic6.png)
 
 # 3 系统运行
 
@@ -126,11 +125,20 @@ device:
         - title-keyword: "" # 标题里包含什么字符串就进行拦截(留空/null表示任意匹配)
           content-keyword: "" # 内容里包含什么字符串就进行拦截(留空/null表示任意匹配)
           interval: 0 # 间隔几秒内只能重复发送一次 (0表示不设置间隔，小于0的任意值表示一直拦截)
+      # 拦截规则
+      # 如果符合规则，则该消息会使用 (filter-name) 判断是否需要拦截
+      # 如果拦截，则该消息不会再进行后续的处理
+      # 关键字 (title-keyword / content-keyword) 匹配模式：正则表达式
+      # filter-name: 处理器 Bean 名称，需要继承 com.orainge.bark_processor.server.process.filter.Filter
+      filter-list:
+        - title-keyword: "" # 标题里包含什么字符串就进行拦截(留空/null表示任意匹配)
+          content-keyword: "" # 内容里包含什么字符串就进行拦截(留空/null表示任意匹配)
+          filter-name: filterProcessor
       # 处理规则
       # 如果符合规则，则该消息会使用 (processor-name) 处理后再提交到 Bark 服务端
       # 适合一些特殊情况，需要对提交的 Bark 信息处理后再提交到 Bark 服务端
       # 关键字 (title-keyword / content-keyword) 匹配模式：正则表达式
-      # forwarder-name: 处理器 Bean 名称，需要继承 com.orainge.bark_processor.server.process.processor.Processor
+      # processor-name: 处理器 Bean 名称，需要继承 com.orainge.bark_processor.server.process.processor.Processor
       processor-list: # 处理规则
         - title-keyword: "" # 标题里包含什么字符串就进行拦截(留空/null表示任意匹配)
           content-keyword: "" # 内容里包含什么字符串就进行拦截(留空/null表示任意匹配)

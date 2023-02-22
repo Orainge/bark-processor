@@ -10,11 +10,20 @@ device:
         - title-keyword: "" # 标题里包含什么字符串就进行拦截(留空/null表示任意匹配)
           content-keyword: "" # 内容里包含什么字符串就进行拦截(留空/null表示任意匹配)
           interval: 0 # 间隔几秒内只能重复发送一次 (0表示不设置间隔，小于0的任意值表示一直拦截)
+      # 拦截规则
+      # 如果符合规则，则该消息会使用 (filter-name) 判断是否需要拦截
+      # 如果拦截，则该消息不会再进行后续的处理
+      # 关键字 (title-keyword / content-keyword) 匹配模式：正则表达式
+      # filter-name: 处理器 Bean 名称，需要继承 com.orainge.bark_processor.server.process.filter.Filter
+      filter-list:
+        - title-keyword: "" # 标题里包含什么字符串就进行拦截(留空/null表示任意匹配)
+          content-keyword: "" # 内容里包含什么字符串就进行拦截(留空/null表示任意匹配)
+          filter-name: filterProcessor
       # 处理规则
       # 如果符合规则，则该消息会使用 (processor-name) 处理后再提交到 Bark 服务端
       # 适合一些特殊情况，需要对提交的 Bark 信息处理后再提交到 Bark 服务端
       # 关键字 (title-keyword / content-keyword) 匹配模式：正则表达式
-      # forwarder-name: 处理器 Bean 名称，需要继承 com.orainge.bark_processor.server.process.processor.Processor
+      # processor-name: 处理器 Bean 名称，需要继承 com.orainge.bark_processor.server.process.processor.Processor
       processor-list: # 处理规则
         - title-keyword: "" # 标题里包含什么字符串就进行拦截(留空/null表示任意匹配)
           content-keyword: "" # 内容里包含什么字符串就进行拦截(留空/null表示任意匹配)
