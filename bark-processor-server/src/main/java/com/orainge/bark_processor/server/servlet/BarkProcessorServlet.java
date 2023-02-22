@@ -52,15 +52,15 @@ public class BarkProcessorServlet extends HttpServlet {
             return formDataMap;
         });
 
-        // Content-Type: application/json
-        PARAMETER_PROCESSOR.put("application/json", (request, response) -> {
-            Map<String, String> formDataMap = new HashMap<>(); // formData 表单
-            Map<String, String[]> map = request.getParameterMap();
-            for (Map.Entry<String, String[]> entry : map.entrySet()) {
-                formDataMap.put(entry.getKey(), entry.getValue()[0]);
-            }
-            return formDataMap;
-        });
+//        // Content-Type: application/json
+//        PARAMETER_PROCESSOR.put("application/json", (request, response) -> {
+//            Map<String, String> formDataMap = new HashMap<>(); // formData 表单
+//            Map<String, String[]> map = request.getParameterMap();
+//            for (Map.Entry<String, String[]> entry : map.entrySet()) {
+//                formDataMap.put(entry.getKey(), entry.getValue()[0]);
+//            }
+//            return formDataMap;
+//        });
 
         // 表单文件类型 Content-Type: multipart/*
         PARAMETER_PROCESSOR.put(FileUploadBase.MULTIPART, (request, response) -> {
