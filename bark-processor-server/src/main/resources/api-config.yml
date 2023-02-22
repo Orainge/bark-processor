@@ -18,7 +18,7 @@ device:
       filter-list:
         - title-keyword: "" # 标题里包含什么字符串就进行拦截(留空/null表示任意匹配)
           content-keyword: "" # 内容里包含什么字符串就进行拦截(留空/null表示任意匹配)
-          filter-name: filterProcessor
+          filter-name: demoFilter
       # 处理规则
       # 如果符合规则，则该消息会使用 (processor-name) 处理后再提交到 Bark 服务端
       # 适合一些特殊情况，需要对提交的 Bark 信息处理后再提交到 Bark 服务端
