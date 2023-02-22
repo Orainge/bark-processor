@@ -123,13 +123,18 @@ public class RepeatFilterUtils {
      * @return true: 拦截; false: 不拦截
      */
     private boolean checkIfIntercept(String deviceKey, int intervalTime) {
+        if (intervalTime == 0) {
+            // 间隔时间 = 0，不拦截
+            return false;
+        } else if (intervalTime < 0) {
+            // 间隔时间 < 0，一直拦截
+            return true;
+        }
+
         synchronized (deviceKey.intern()) {
             Long lastTime = TIME_MAP.get(deviceKey);
             if (lastTime == null) {
                 TIME_MAP.put(deviceKey, System.currentTimeMillis());
-                return false;
-            } else if (intervalTime <= 0) {
-                // 间隔时间 <= 0
                 return false;
             } else {
                 // 比较时间
