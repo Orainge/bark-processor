@@ -238,6 +238,8 @@ terminal-notifier:
 
 ## 6.1 如何获取 Nextcloud 用户 token
 
+> 注意！首先需要在系统中安装该应用`Admin Notification`：https://apps.nextcloud.com/apps/admin_notifications
+
 - 页面地址：nextcloud服务地址/settings/user/security
 
 - 设置-安全-设备和活动链接：页面最底端输入应用名（任意即可），然后点击【创建新应用密码】，即可得到用户token。
